@@ -98,33 +98,31 @@ float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+    /* TokyoNight colorscheme
+     * https://github.com/folke/tokyonight.nvim
+     */
+    "#1D202F",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#a9b1d6",
+    "#414868",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#c0caf5",
+    [255] = 0,
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
+	"#c0caf5", /* cur -> 256*/
+	"#24283b", /* rev cur -> 257 */
+	"#c0caf5", /* fg -> 258 */
+	"#24283b", /* bg -> 259 */
 };
 
 
@@ -133,9 +131,13 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 258;
+unsigned int foreground = 258;
 unsigned int defaultbg = 259;
+unsigned int background = 259;
 unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int cursorColor = 256;
+unsigned int defaultrcs = 257;
+unsigned int revcursorColor = 257;
 
 /*
  * Default shape of cursor
@@ -177,36 +179,28 @@ static uint forcemousemod = ShiftMask;
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "font",         STRING,  &font },
-		{ "color0",       STRING,  &colorname[0] },
-		{ "color1",       STRING,  &colorname[1] },
-		{ "color2",       STRING,  &colorname[2] },
-		{ "color3",       STRING,  &colorname[3] },
-		{ "color4",       STRING,  &colorname[4] },
-		{ "color5",       STRING,  &colorname[5] },
-		{ "color6",       STRING,  &colorname[6] },
-		{ "color7",       STRING,  &colorname[7] },
-		{ "color8",       STRING,  &colorname[8] },
-		{ "color9",       STRING,  &colorname[9] },
-		{ "color10",      STRING,  &colorname[10] },
-		{ "color11",      STRING,  &colorname[11] },
-		{ "color12",      STRING,  &colorname[12] },
-		{ "color13",      STRING,  &colorname[13] },
-		{ "color14",      STRING,  &colorname[14] },
-		{ "color15",      STRING,  &colorname[15] },
-		{ "background",   STRING,  &colorname[256] },
-		{ "foreground",   STRING,  &colorname[257] },
-		{ "cursorColor",  STRING,  &colorname[258] },
-		{ "termname",     STRING,  &termname },
-		{ "shell",        STRING,  &shell },
-		{ "minlatency",   INTEGER, &minlatency },
-		{ "maxlatency",   INTEGER, &maxlatency },
-		{ "blinktimeout", INTEGER, &blinktimeout },
-		{ "bellvolume",   INTEGER, &bellvolume },
-		{ "tabspaces",    INTEGER, &tabspaces },
-		{ "borderpx",     INTEGER, &borderpx },
-		{ "cwscale",      FLOAT,   &cwscale },
-		{ "chscale",      FLOAT,   &chscale },
+		{ "font",           STRING,  &font },
+		{ "color0",         STRING,  &colorname[0] },
+		{ "color1",         STRING,  &colorname[1] },
+		{ "color2",         STRING,  &colorname[2] },
+		{ "color3",         STRING,  &colorname[3] },
+		{ "color4",         STRING,  &colorname[4] },
+		{ "color5",         STRING,  &colorname[5] },
+		{ "color6",         STRING,  &colorname[6] },
+		{ "color7",         STRING,  &colorname[7] },
+		{ "color8",         STRING,  &colorname[8] },
+		{ "color9",         STRING,  &colorname[9] },
+		{ "color10",        STRING,  &colorname[10] },
+		{ "color11",        STRING,  &colorname[11] },
+		{ "color12",        STRING,  &colorname[12] },
+		{ "color13",        STRING,  &colorname[13] },
+		{ "color14",        STRING,  &colorname[14] },
+		{ "color15",        STRING,  &colorname[15] },
+		{ "cursorColor",    STRING,  &colorname[256] },
+		{ "revcursorColor", STRING,  &colorname[257] },
+		{ "foreground",     STRING,  &colorname[258] },
+		{ "background",     STRING,  &colorname[259] },
+        { "alpha",          FLOAT,  &alpha },
 };
 
 /*
