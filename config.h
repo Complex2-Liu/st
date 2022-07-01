@@ -201,6 +201,7 @@ ResourcePref resources[] = {
 		{ "foreground",     STRING,  &colorname[258] },
 		{ "background",     STRING,  &colorname[259] },
         { "alpha",          FLOAT,   &alpha },
+        { "borderpx",       INTEGER, &borderpx },
 };
 
 /*
