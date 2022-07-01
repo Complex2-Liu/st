@@ -7,3 +7,4 @@ Stay update with the latest changes:
 
 - Alpha
 - Anysize
+- Scrollback
