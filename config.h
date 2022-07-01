@@ -200,7 +200,7 @@ ResourcePref resources[] = {
 		{ "revcursorColor", STRING,  &colorname[257] },
 		{ "foreground",     STRING,  &colorname[258] },
 		{ "background",     STRING,  &colorname[259] },
-        { "alpha",          FLOAT,  &alpha },
+        { "alpha",          FLOAT,   &alpha },
 };
 
 /*
@@ -209,6 +209,8 @@ ResourcePref resources[] = {
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+    { XK_NO_MOD,            Button4, kscrollup,      {.i = 4} },
+    { XK_NO_MOD,            Button5, kscrolldown,    {.i = 4} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -230,6 +232,13 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_plus,        zoom,           {.f = +1} },
 	{ MODKEY,               XK_minus,       zoom,           {.f = -1} },
 	{ MODKEY,               XK_equal,       zoomreset,      {.f =  0} },
+
+    /* scroll back through terminal output */
+	{ MODKEY,               XK_k,           kscrollup,      {.i =  4} },
+	{ MODKEY,               XK_j,           kscrolldown,    {.i =  4} },
+	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
+	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
+
 
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
