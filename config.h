@@ -5,7 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Hack Nerd Font:pixelsize=12:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+    "Ping Fang SC:pixelsize=12:antialias=true:autohint=true",
+    "Apple Color Emoji:pixelsize=12:antialias=true:autohint=true",
+};
 static int borderpx = 2;
 
 /*
